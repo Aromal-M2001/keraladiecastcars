@@ -7,25 +7,34 @@
     <title>CCA</title>
     <script>
 function printPage() {
-  document.querySelectorAll(".counter button").forEach((btn) => (btn.style.display = "none"));
+  // Clone the table to modify for printing
+  const table = document.querySelector("table").cloneNode(true);
+  const tbody = table.querySelector("tbody");
 
-  document.querySelectorAll("tbody tr").forEach((row) => {
+  // Remove rows with zero quantity
+  tbody.querySelectorAll("tr").forEach((row) => {
     const countElement = row.querySelector(".count");
     if (countElement && parseInt(countElement.textContent) === 0) {
-      row.style.display = "none"; // Hide instead of removing
+      row.remove();
     }
   });
 
-  setTimeout(() => {
-    window.print();
-    
-    document.querySelectorAll("tbody tr").forEach((row) => {
-      row.style.display = ""; // Restore visibility
-    });
+  // Create a temporary container for printing
+  const printContainer = document.createElement("div");
+  printContainer.appendChild(table);
+  document.body.appendChild(printContainer);
 
-    document.querySelectorAll(".counter button").forEach((btn) => (btn.style.display = "inline"));
-  }, 300); // Small delay ensures update applies before print on mobile
+  // Hide unnecessary elements
+  document.querySelectorAll(".counter button").forEach((btn) => btn.style.display = "none");
+
+  // Print only the cloned table
+  window.print();
+
+  // Restore visibility after printing
+  printContainer.remove();
+  document.querySelectorAll(".counter button").forEach((btn) => btn.style.display = "inline");
 }
+
 
       function calculateTotalQuantity() {
         let total = 0;
