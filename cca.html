@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order List (30/03/2025)</title>
+    <script>
+      function printPage() {
+        let removedRows = [];
+
+        document.querySelectorAll("tbody tr").forEach((row) => {
+          const countElement = row.querySelector(".count");
+          if (countElement && parseInt(countElement.textContent) === 0) {
+            removedRows.push(row);
+            row.remove();
+          }
+        });
+
+        window.print();
+
+        const tbody = document.querySelector("tbody");
+        removedRows.forEach((row) => tbody.appendChild(row));
+      }
+
+      function calculateTotalQuantity() {
+        let total = 0;
+        const quantities = document.querySelectorAll(
+          "tbody tr td:nth-child(4) .count"
+        );
+
+        quantities.forEach((qty) => {
+          total += parseInt(qty.textContent) || 0;
+        });
+
+        document.getElementById("totalQuantity").textContent =
+          "Total Quantity: " + total;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".counter").forEach((counter) => {
+          const minus = counter.querySelector(".minus");
+          const plus = counter.querySelector(".plus");
+          const count = counter.querySelector(".count");
+
+          minus.addEventListener("click", () => {
+            let value = parseInt(count.textContent);
+            if (value > 0) count.textContent = value - 1;
+            calculateTotalQuantity();
+          });
+
+          plus.addEventListener("click", () => {
+            let value = parseInt(count.textContent);
+            count.textContent = value + 1;
+            calculateTotalQuantity();
+          });
+        });
+
+        calculateTotalQuantity();
+      });
+      window.onload = calculateTotalQuantity;
+    </script>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.category {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+td img {
+    width: 60px;
+    height: auto;
+
+}
+
+.image{
+    width: 47px;
+}
+
+.padding{
+    padding: 3px 3px 0px 3px !important;
+}
+
+.total {
+    display: flex;
+    justify-content: flex-end;
+    padding:  10px 30px 10px 10px;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    padding: 5px;
+    width: 100px;
+    justify-content: space-between;
+  }
+  
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  .count {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .center-div{
+    display: flex;
+    justify-content: center;
+  }
+
+  .quantity{
+    width: 50px !important;
+  }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2 onclick="printPage()" class="category">CCA Zinc 1/64</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="image">Image</th>
+            <th>Name</th>
+            <th>Color</th>
+            <th class="quantity">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="padding">
+              <img src="cca/PHOTO-2025-03-31-08-29-34 2.jpg" alt="Car 2" />
+            </td>
+            <td>Porsche 911-G12 RS</td>
+            <td>Yellow</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding">
+              <img src="cca/PHOTO-2025-03-31-08-29-35.jpg" alt="Car 2" />
+            </td>
+            <td>Porsche 911-G12 RS</td>
+            <td>Blue</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding">
+              <img src="cca/PHOTO-2025-03-31-08-29-34 3.jpg" alt="Car 2" />
+            </td>
+            <td>Porsche 918 Spyder</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding">
+              <img src="cca/PHOTO-2025-03-31-08-29-34.jpg" alt="Car 2" />
+            </td>
+            <td>Porsche 918 Spyder</td>
+            <td>Grey</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding">
+              <img src="cca/PHOTO-2025-03-31-08-30-04.jpg" alt="Car 2" />
+            </td>
+            <td>Toyota AE86</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S18-01.JPG" alt="Car 2" /></td>
+            <td>Toyota AE86</td>
+            <td>White</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/L03-01.JPG" alt="Car 2" /></td>
+            <td>VW Classical Beetle</td>
+            <td>Blue</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/L03-02.JPG" alt="Car 2" /></td>
+            <td>VW Classical Beetle</td>
+            <td>Cream</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/L01-02.JPG" alt="Car 2" /></td>
+            <td>Lexus ES300h</td>
+            <td>Blue</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/L01-01.JPG" alt="Car 2" /></td>
+            <td>Lexus ES300h</td>
+            <td>Grey</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/V03-01.JPG" alt="Car 2" /></td>
+            <td>VW Classical Bus</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/V03-02.JPG" alt="Car 2" /></td>
+            <td>VW Classical Bus</td>
+            <td>Green</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/V04-01.JPG" alt="Car 2" /></td>
+            <td>BMW X5M</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/V04-02.JPG" alt="Car 2" /></td>
+            <td>BMW X5M</td>
+            <td>Blue</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/V02-01.JPG" alt="Car 2" /></td>
+            <td>Suzuki Jimny</td>
+            <td>Green</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/V02-02.JPG" alt="Car 2" /></td>
+            <td>Suzuki Jimny</td>
+            <td>Blue</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/V01-01.JPG" alt="Car 2" /></td>
+            <td>Toyota LC Prado</td>
+            <td>Black</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/V01-02.JPG" alt="Car 2" /></td>
+            <td>Toyota LC Prado</td>
+            <td>White</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S15-01.JPG" alt="Car 2" /></td>
+            <td>BMW 3.0 CSL</td>
+            <td>White</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S14-02.JPG" alt="Car 2" /></td>
+            <td>Toyota GR Supra</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S14-01.JPG" alt="Car 2" /></td>
+            <td>Toyota GR Supra</td>
+            <td>Grey</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S13-01.JPG" alt="Car 2" /></td>
+            <td>BMW Z4 M40I</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S13-02.JPG" alt="Car 2" /></td>
+            <td>BMW Z4 M40I</td>
+            <td>Violet</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S12-02.jpg" alt="Car 2" /></td>
+            <td>Pagani Zonda R</td>
+            <td>Black</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S12-01.jpg" alt="Car 2" /></td>
+            <td>Pagani Zonda R</td>
+            <td>Violet</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S11-02.JPG" alt="Car 2" /></td>
+            <td>Ford Shelby GT350</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S11-01.JPG" alt="Car 2" /></td>
+            <td>Ford Shelby GT350</td>
+            <td>Blue</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S10-01.JPG" alt="Car 2" /></td>
+            <td>Chevrolet Camaro</td>
+            <td>Yellow</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S10-02.JPG" alt="Car 2" /></td>
+            <td>Chevrolet Camaro</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S09-01.JPG" alt="Car 2" /></td>
+            <td>BMW M850i</td>
+            <td>Green</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S09-02.JPG" alt="Car 2" /></td>
+            <td>BMW M850i</td>
+            <td>Orange</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S08-01.JPG" alt="Car 2" /></td>
+            <td>Ford GT 2017</td>
+            <td>Blue</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S08-02.JPG" alt="Car 2" /></td>
+            <td>Ford GT 2017</td>
+            <td>Silver</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S07-02.JPG" alt="Car 2" /></td>
+            <td>BMW M4 G82</td>
+            <td>Green</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S07-01.JPG" alt="Car 2" /></td>
+            <td>BMW M4 G82</td>
+            <td>Violet</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S06-02.JPG" alt="Car 2" /></td>
+            <td>Ford Mustang GT</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S06-01.JPG" alt="Car 2" /></td>
+            <td>Ford Mustang GT</td>
+            <td>Grey</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S05-02.JPG" alt="Car 2" /></td>
+            <td>Audi RS5 2017</td>
+            <td>Blue</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S05-01.JPG" alt="Car 2" /></td>
+            <td>Audi RS5 2017</td>
+            <td>Orange</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S04-02.JPG" alt="Car 2" /></td>
+            <td>BMW M4 GT3</td>
+            <td>White</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S04-01.JPG" alt="Car 2" /></td>
+            <td>BMW M4 GT3</td>
+            <td>Yellow</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S03-02.JPG" alt="Car 2" /></td>
+            <td>Nissan GT-R (R35)</td>
+            <td>White</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S03-01.JPG" alt="Car 2" /></td>
+            <td>Nissan GT-R (R35)</td>
+            <td>Blue</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S02-02.JPG" alt="Car 2" /></td>
+            <td>Lamborghini LP700-4</td>
+            <td>Green</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S02-01.JPG" alt="Car 2" /></td>
+            <td>Lamborghini LP700-4</td>
+            <td>Orange</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S01-01.JPG" alt="Car 2" /></td>
+            <td>Lamborghini</td>
+            <td>White</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/S01-02.JPG" alt="Car 2" /></td>
+            <td>Lamborghini</td>
+            <td>Yellow</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/L04-01.JPG" alt="Car 2" /></td>
+            <td>Bentley Flying Spur</td>
+            <td>Black</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/L04-02.JPG" alt="Car 2" /></td>
+            <td>Bentley Flying Spur</td>
+            <td>Orange</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/L02-02.jpg" alt="Car 2" /></td>
+            <td>BMW I7</td>
+            <td>Red</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="padding"><img src="cca/L02-01.jpg" alt="Car 2" /></td>
+            <td>BMW I7</td>
+            <td>Grey</td>
+            <td class="center-div">
+              <div class="counter">
+                <button class="minus">−</button>
+                <span class="count">0</span>
+                <button class="plus">+</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="total">
+        <h2 id="totalQuantity"></h2>
+      </div>
+    </div>
+  </body>
+</html>
