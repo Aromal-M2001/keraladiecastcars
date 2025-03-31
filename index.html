@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order List (30/03/2025)</title>
     <script>
-      function printPage() {
-        let removedRows = [];
+function printPage() {
+  document.querySelectorAll(".counter button").forEach((btn) => (btn.style.display = "none"));
 
-        document.querySelectorAll("tbody tr").forEach((row) => {
-          const countElement = row.querySelector(".count");
-          if (countElement && parseInt(countElement.textContent) === 0) {
-            removedRows.push(row);
-            row.remove();
-          }
-        });
+  document.querySelectorAll("tbody tr").forEach((row) => {
+    const countElement = row.querySelector(".count");
+    if (countElement && parseInt(countElement.textContent) === 0) {
+      row.style.display = "none"; // Hide instead of removing
+    }
+  });
 
-        window.print();
+  setTimeout(() => {
+    window.print();
+    
+    document.querySelectorAll("tbody tr").forEach((row) => {
+      row.style.display = ""; // Restore visibility
+    });
 
-        const tbody = document.querySelector("tbody");
-        removedRows.forEach((row) => tbody.appendChild(row));
-      }
+    document.querySelectorAll(".counter button").forEach((btn) => (btn.style.display = "inline"));
+  }, 300); // Small delay ensures update applies before print on mobile
+}
 
       function calculateTotalQuantity() {
         let total = 0;
@@ -133,6 +137,16 @@ td img {
     cursor: pointer;
     padding: 5px;
   }
+
+  @media print {
+  .counter button {
+    display: none; /* Hide plus and minus buttons */
+  }
+  tbody tr:has(.count:contains("0")) {
+    display: none; /* Hide rows with zero quantity */
+  }
+}
+
   
   button:focus {
     outline: none;
