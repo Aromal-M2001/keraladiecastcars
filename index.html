@@ -23,7 +23,7 @@
             total += parseInt(qty.textContent) || 0;
           });
         document.getElementById("totalQuantity").textContent =
-          "Total Quantity: " + total;
+          "Quantity: " + total;
         calculateTotalPrice(total);
       }
 
@@ -37,9 +37,9 @@
         let totalPrice = quantity * pricePerPiece;
 
         document.getElementById("totalPrice").textContent =
-          "Total Price: " + totalPrice + " INR";
+          "Amount: ₹" + totalPrice + "/-";
         document.getElementById("pricePerPiece").textContent =
-          "Price per Piece: " + pricePerPiece + " INR";
+          "Price: ₹" + pricePerPiece + "/pcs";
       }
 
       function filterAndShowSummary() {
@@ -136,30 +136,62 @@
 
 
       .total {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    gap: 100px; /* Adds spacing between lines */
+    flex-direction: row; 
+}
+
+.total > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (min-width: 1024px) { /* Desktop view */
+    .total {
+        display: flex ;
+        align-items: center ;
+        justify-content: space-between ;
     }
 
     .total > div {
         display: flex;
         align-items: center;
-        gap: 100px; /* Adjust spacing as needed */
+        gap: 70px; /* Adjust spacing as needed */
     }
 
     .total p {
         margin: 0;
         white-space: nowrap; /* Prevent line breaks */
     }
+}
 
-      @media (max-width: 600px) {
-        .total {
-          display: flex;
-          justify-content: space-between;
-          padding: 10px;
-          flex-direction: row;
-        }
-      }
+@media (max-width: 1023px) { /* Mobile view */
+    .total {
+        display: flex !important;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-direction: row !important;
+        align-items: center;
+    }
+
+    .total > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .total p {
+        margin: 5px 0;
+    }
+
+    .total button {
+        width: 100%; /* Optional: Make the button full width */
+    }
+}
+
+
 
       button {
         border: none;
@@ -211,9 +243,14 @@
       .img {
         width: 10px;
       }
+      @media (max-width: 1023px) {
+        .pl-3 {
+        padding-left: 5px !important;
+      }
+      }
 
       .pl-3 {
-        padding-left: 20px !important;
+        padding-left: 20px;
       }
     </style>
   </head>
@@ -858,7 +895,7 @@
         <div>
           <p id="totalQuantity">Total Quantity: 0</p>
           <p id="pricePerPiece">Price per Piece: 480 INR</p>
-          <p id="totalPrice">Total Price: 0 INR</p>
+          <p id="totalPrice">Total Price: 0/-</p>
         </div>
         <div style="display: flex">
           <button class="btn" onclick="filterAndShowSummary()">Submit</button>
