@@ -28,12 +28,7 @@
       }
 
       function calculateTotalPrice(quantity) {
-        let pricePerPiece = 480;
-        if (quantity >= 97) {
-          pricePerPiece = 440;
-        } else if (quantity >= 33) {
-          pricePerPiece = 465;
-        }
+        let pricePerPiece = 440;
         let totalPrice = quantity * pricePerPiece;
 
         document.getElementById("totalPrice").textContent =
